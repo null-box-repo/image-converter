@@ -1,0 +1,10 @@
+id=image-converter
+name=Image Converter
+icon=icon.jpg
+description=A tool for converting image formats, supporting 176 formats via ImageMagick.
+author=YasserNull
+version=v1.0.0
+versionCode=1
+repository=https://github.com/null-box-repo/image-converter
+install=setup.sh
+permission=default
