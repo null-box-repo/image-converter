@@ -2,7 +2,7 @@
 
 ![logo](icon.jpg)
 
-A tool for converting image formats, supporting 176 formats via ImageMagick
+A tool for converting image formats, supporting 176 formats via ImageMagick.
 
 <p align="center">
   <img src="https://img.shields.io/github/downloads/null-box-repo/image-converter/total?label=Downloads"/>

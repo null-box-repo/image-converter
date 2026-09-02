@@ -17,8 +17,6 @@ const quality = $('quality');
 const qualityValue = $('qualityValue');
 const saveCard = $('saveCard');
 const saveDir = $('saveDir');
-const samePath = $('samePath');
-const deleteAfter = $('deleteAfter');
 const convertBtn = $('convertBtn');
 const btnLabel = convertBtn.querySelector('.btn-label');
 const spinner = convertBtn.querySelector('.spinner');
@@ -189,15 +187,6 @@ dropzone.addEventListener('drop', (e) => {
   e.preventDefault();
   dropzone.classList.remove('over');
   if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
-});
-
-samePath.addEventListener('change', () => {
-  if (samePath.checked) {
-    saveDir.disabled = true;
-  } else {
-    saveDir.disabled = false;
-    saveDir.value = '/sdcard/Download';
-  }
 });
 
 convertBtn.addEventListener('click', async () => {
