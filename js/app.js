@@ -33,6 +33,7 @@ let selectedFormat = null;
 let currentFile = null;
 let lastConvertedBlob = null;
 let lastConvertedExt = '';
+let isConverting = false;
 
 const GROUP_LABELS = {
   image: 'Images',
@@ -194,6 +195,7 @@ convertBtn.addEventListener('click', async () => {
   clearError();
   saveStatus.hidden = true;
   convertBtn.disabled = true;
+  isConverting = true;
   btnLabel.textContent = 'Converting...';
   spinner.hidden = false;
   try {
@@ -233,6 +235,7 @@ convertBtn.addEventListener('click', async () => {
   } catch (e) {
     showError(e.message);
   } finally {
+    isConverting = false;
     convertBtn.disabled = false;
     btnLabel.textContent = 'Convert';
     spinner.hidden = true;
@@ -267,5 +270,36 @@ saveBtn.addEventListener('click', async () => {
     saveStatus.hidden = false;
   } finally {
     saveBtn.disabled = false;
+  }
+});
+
+const refreshModal = $('refreshModal');
+const modalCancel = $('modalCancel');
+const modalRefresh = $('modalRefresh');
+let pendingRefresh = false;
+
+window.addEventListener('beforeunload', (e) => {
+  if (!isConverting) return;
+  e.preventDefault();
+  e.returnValue = '';
+  refreshModal.hidden = false;
+  pendingRefresh = true;
+});
+
+modalCancel.addEventListener('click', () => {
+  refreshModal.hidden = true;
+  pendingRefresh = false;
+});
+
+modalRefresh.addEventListener('click', () => {
+  refreshModal.hidden = true;
+  pendingRefresh = false;
+  window.location.reload();
+});
+
+refreshModal.addEventListener('click', (e) => {
+  if (e.target === refreshModal) {
+    refreshModal.hidden = true;
+    pendingRefresh = false;
   }
 });

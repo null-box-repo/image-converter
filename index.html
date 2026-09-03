@@ -40,7 +40,7 @@
           <polyline points="17 8 12 3 7 8"></polyline>
           <line x1="12" y1="3" x2="12" y2="15"></line>
         </svg>
-        <p class="drop-text">Drag &amp; drop an image here, or <button class="link" id="browseBtn">browse files</button></p>
+        <p class="drop-text"><button class="link" id="browseBtn">pick a image</button></p>
         <p class="hint">Any format supported by ImageMagick</p>
       </div>
     </section>
@@ -92,6 +92,21 @@
 
     <p class="error" id="error" hidden></p>
   </main>
+
+  <div class="modal-overlay" id="refreshModal" hidden>
+    <div class="modal-card">
+      <svg class="modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="23 4 23 10 17 10"></polyline>
+        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+      </svg>
+      <p class="modal-text">هل متأكد تبي تسوي refresh؟<br><span class="modal-hint">يوجد عملية تحويل قيد العمل</span></p>
+      <div class="modal-actions">
+        <button class="modal-btn modal-cancel" id="modalCancel">الغاء</button>
+        <button class="modal-btn modal-refresh" id="modalRefresh">Refresh</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/app.js"></script>
 </body>
 </html>
